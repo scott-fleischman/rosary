@@ -1,1 +1,1 @@
-ReactDOMRe.renderToElementWithId(<MainImage />, "rosary-app");
+ReactDOMRe.renderToElementWithId(<RosaryView />, "rosary-app");

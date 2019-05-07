@@ -1,5 +1,3 @@
-let handleClick = _event => Js.log("clicked!");
-
 let imageBoxStyle =
   ReactDOMRe.Style.make(
     ~margin="0px",
@@ -18,7 +16,10 @@ let imageStyle =
   );
 
 [@react.component]
-let make = () =>
-  <div onClick=handleClick style=imageBoxStyle>
-    <img style=imageStyle src="img/sorrowful/5-crucifixion-1.jpg" />
+let make = (~mysteryImage: Mystery.mysteryImage) =>
+  <div style=imageBoxStyle>
+    <img
+      style=imageStyle
+      src={Mystery.mysteryImageToFullPath(mysteryImage)}
+    />
   </div>;

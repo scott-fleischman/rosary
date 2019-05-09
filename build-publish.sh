@@ -1,5 +1,6 @@
 #!/bin/bash -x
 
+yarn clean
 yarn build
 
 rm -rf build

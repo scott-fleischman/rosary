@@ -14,6 +14,18 @@ type mystery = {
   mysteryOrdinal,
 };
 
+type location =
+  | AnnounceMystery
+  | OurFather
+  | HailMary(int)
+  | GloryBe
+  | OMyJesus;
+
+type mysteryLocation = {
+  mystery,
+  location,
+};
+
 type imageFormat =
   | Png
   | Jpeg;
@@ -26,6 +38,11 @@ let initialImageIndex = ImageIndex(1);
 type mysteryImage = {
   mystery,
   imageIndex,
+};
+
+let initialMysteryImage = (mystery: mystery): mysteryImage => {
+  mystery,
+  imageIndex: initialImageIndex,
 };
 
 let mysterySetToDirectory = (mysterySet: mysterySet): string =>
@@ -102,3 +119,67 @@ let nextImage = ({mystery, imageIndex}: mysteryImage): mysteryImage => {
   let nextIndex = getWrappedIndex(unsafeNextIndex, imageFormats);
   {mystery, imageIndex: nextIndex};
 };
+
+let nextMysteryOrdinal =
+    (mysteryOrdinal: mysteryOrdinal): option(mysteryOrdinal) =>
+  switch (mysteryOrdinal) {
+  | FirstMystery => Some(SecondMystery)
+  | SecondMystery => Some(ThirdMystery)
+  | ThirdMystery => Some(FourthMystery)
+  | FourthMystery => Some(FifthMystery)
+  | FifthMystery => None
+  };
+
+let nextLocation = (location: location) =>
+  switch (location) {
+  | AnnounceMystery => Some(OurFather)
+  | OurFather => Some(HailMary(1))
+  | HailMary(value) =>
+    if (value < 10) {
+      Some(HailMary(value + 1));
+    } else {
+      Some(GloryBe);
+    }
+  | GloryBe => Some(OMyJesus)
+  | OMyJesus => None
+  };
+
+let initialMysteryOrdinal: mysteryOrdinal = FirstMystery;
+let initialLocation: location = AnnounceMystery;
+
+let initialMysteryLocation = (mysterySet: mysterySet): mysteryLocation => {
+  mystery: {
+    mysterySet,
+    mysteryOrdinal: initialMysteryOrdinal,
+  },
+  location: initialLocation,
+};
+
+let nextMysteryLocation =
+    (mysteryLocation: mysteryLocation): option(mysteryLocation) => {
+  let {mystery, location} = mysteryLocation;
+  let {mysterySet, mysteryOrdinal} = mystery;
+  switch (nextLocation(location)) {
+  | Some(nextLocation) => Some({mystery, location: nextLocation})
+  | None =>
+    switch (nextMysteryOrdinal(mysteryOrdinal)) {
+    | Some(nextOrdinal) =>
+      Some({
+        mystery: {
+          mysterySet,
+          mysteryOrdinal: nextOrdinal,
+        },
+        location: initialLocation,
+      })
+    | None => None
+    }
+  };
+};
+
+let nextMysteryLocationOption =
+    (mysteryLocationOption: option(mysteryLocation))
+    : option(mysteryLocation) =>
+  switch (mysteryLocationOption) {
+  | Some(location) => nextMysteryLocation(location)
+  | None => None
+  };

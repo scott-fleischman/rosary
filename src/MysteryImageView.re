@@ -1,5 +1,5 @@
 let imageBoxStyle =
-  ReactDOMRe.Style.make(~display="grid", ~height="100%", ());
+  ReactDOMRe.Style.make(~display="grid", ~height="100%", ~zIndex="-1", ());
 let imageStyle =
   ReactDOMRe.Style.make(
     ~maxWidth="100%",

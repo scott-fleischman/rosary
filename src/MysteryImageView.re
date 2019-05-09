@@ -1,5 +1,12 @@
-let imageBoxStyle = ReactDOMRe.Style.make(~display="grid", ());
-let imageStyle = ReactDOMRe.Style.make(~height="100vh", ~margin="auto", ());
+let imageBoxStyle =
+  ReactDOMRe.Style.make(~display="grid", ~height="100%", ());
+let imageStyle =
+  ReactDOMRe.Style.make(
+    ~maxWidth="100%",
+    ~maxHeight="100vh",
+    ~margin="auto",
+    (),
+  );
 
 [@react.component]
 let make = (~mysteryImage: Mystery.mysteryImage) =>

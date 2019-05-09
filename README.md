@@ -1,5 +1,7 @@
 # rosary
 
+[![Build Status](https://travis-ci.org/scott-fleischman/rosary.svg?branch=master)](https://travis-ci.org/scott-fleischman/rosary)
+
 A Rosary web app written in ReasonML and React.
 
 https://scott-fleischman.github.io/rosary

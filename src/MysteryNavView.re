@@ -1,6 +1,6 @@
 let containerStyle =
   ReactDOMRe.Style.make(
-    ~position="absolute",
+    ~position="fixed",
     ~right="0",
     ~bottom="0",
     ~cursor="pointer",

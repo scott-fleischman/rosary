@@ -10,7 +10,7 @@ let containerStyle =
   );
 
 let titleStyle =
-  ReactDOMRe.Style.make(~fontSize="20pt", ~margin="16px 0", ());
+  ReactDOMRe.Style.make(~fontSize="48pt", ~margin="16px 0", ());
 
 [@react.component]
 let make =

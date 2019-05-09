@@ -8,8 +8,9 @@ let containerStyle =
   );
 
 let titleStyle =
-  ReactDOMRe.Style.make(~fontSize="20pt", ~margin="16px 0", ());
-let linkStyle = ReactDOMRe.Style.make(~cursor="pointer", ());
+  ReactDOMRe.Style.make(~fontSize="60pt", ~margin="16px 0", ());
+let linkStyle =
+  ReactDOMRe.Style.make(~cursor="pointer", ~fontSize="48pt", ());
 
 [@react.component]
 let make = (~selectMysterySet, ~language: Labels.language) => {

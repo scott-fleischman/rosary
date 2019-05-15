@@ -5,7 +5,7 @@
     "build": "bsb -make-world",
     "start": "bsb -make-world -w",
     "clean": "bsb -clean-world",
-    "webpack": "mkdir -p build && ln -s ../img build/img && webpack -w",
+    "webpack": "mkdir -vp build && rm -vf build/img && ln -vs ../img build/img && webpack -w",
     "webpack:production": "NODE_ENV=production webpack",
     "server": "webpack-dev-server --host 0.0.0.0"
   },

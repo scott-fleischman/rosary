@@ -1,5 +1,6 @@
 /* We only have sorrowful mysteries for now */
 type mysterySet =
+  | Joyful
   | Sorrowful;
 
 type mysteryOrdinal =
@@ -47,11 +48,17 @@ let initialMysteryImage = (mystery: mystery): mysteryImage => {
 
 let mysterySetToDirectory = (mysterySet: mysterySet): string =>
   switch (mysterySet) {
+  | Joyful => "joyful"
   | Sorrowful => "sorrowful"
   };
 
 let mysteryToFilePrefix = ({mysterySet, mysteryOrdinal}): string =>
   switch (mysterySet, mysteryOrdinal) {
+  | (Joyful, FirstMystery) => "1-annunciation"
+  | (Joyful, SecondMystery) => "2-visitation"
+  | (Joyful, ThirdMystery) => "3-birth"
+  | (Joyful, FourthMystery) => "4-presentation"
+  | (Joyful, FifthMystery) => "5-finding"
   | (Sorrowful, FirstMystery) => "1-agony"
   | (Sorrowful, SecondMystery) => "2-scourging"
   | (Sorrowful, ThirdMystery) => "3-crowning"
@@ -62,6 +69,11 @@ let mysteryToFilePrefix = ({mysterySet, mysteryOrdinal}): string =>
 let mysteryToImageFormats =
     ({mysterySet, mysteryOrdinal}): array(imageFormat) =>
   switch (mysterySet, mysteryOrdinal) {
+  | (Joyful, FirstMystery) => [|Jpeg, Jpeg|]
+  | (Joyful, SecondMystery) => [|Jpeg|]
+  | (Joyful, ThirdMystery) => [|Jpeg|]
+  | (Joyful, FourthMystery) => [|Jpeg, Jpeg, Jpeg|]
+  | (Joyful, FifthMystery) => [|Jpeg|]
   | (Sorrowful, FirstMystery) => [|Png, Jpeg, Jpeg, Jpeg|]
   | (Sorrowful, SecondMystery) => [|Jpeg, Jpeg|]
   | (Sorrowful, ThirdMystery) => [|Jpeg, Jpeg|]

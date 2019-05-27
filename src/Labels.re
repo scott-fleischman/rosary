@@ -6,6 +6,7 @@ let mysterySetToLabel =
   switch (language) {
   | English =>
     switch (mysterySet) {
+    | Mystery.Joyful => "Joyful Mysteries"
     | Mystery.Sorrowful => "Sorrowful Mysteries"
     }
   };
@@ -16,6 +17,14 @@ let mysteryToLabel =
   switch (language) {
   | English =>
     switch (mysterySet) {
+    | Mystery.Joyful =>
+      switch (mysteryOrdinal) {
+      | FirstMystery => "1st Joyful Mystery: Annunciation to Mary"
+      | SecondMystery => "2nd Joyful Mystery: Mary visits Elizabeth"
+      | ThirdMystery => "3rd Joyful Mystery: Birth of Jesus"
+      | FourthMystery => "4th Joyful Mystery: Presentation of Jesus"
+      | FifthMystery => "5th Joyful Mystery: Finding of Jesus"
+      }
     | Mystery.Sorrowful =>
       switch (mysteryOrdinal) {
       | FirstMystery => "1st Sorrowful Mystery: Agony in the Garden"

@@ -20,6 +20,9 @@ let make = (~selectMysterySet, ~language: Labels.language) => {
     <div style=titleStyle>
       {ReasonReact.string(Labels.rosaryLabel(language))}
     </div>
+    <div style=linkStyle onClick={clickSelectMystery(Mystery.Joyful)}>
+      {ReasonReact.string(Labels.mysterySetToLabel(language, Mystery.Joyful))}
+    </div>
     <div style=linkStyle onClick={clickSelectMystery(Mystery.Sorrowful)}>
       {ReasonReact.string(
          Labels.mysterySetToLabel(language, Mystery.Sorrowful),

@@ -43,7 +43,7 @@ let reducer = (state, action) =>
     }
   };
 
-let initialState = (~mysterySet: Mystery.mysterySet) => {
+let initialState = (mysterySet: Mystery.mysterySet) => {
   mysteryImage: makeInitialMysteryImage(mysterySet),
   mysteryLocation: Some(Mystery.initialMysteryLocation(mysterySet)),
 };
